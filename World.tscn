@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bx5stau0mvgj0"]
+[gd_scene load_steps=6 format=4 uid="uid://bx5stau0mvgj0"]
 
 [ext_resource type="PackedScene" uid="uid://dmjs1mntieaic" path="res://player.tscn" id="1_a6pe4"]
 [ext_resource type="PackedScene" uid="uid://mr78l12aycpt" path="res://Camera.tscn" id="2_hvnjp"]
 [ext_resource type="PackedScene" uid="uid://cjqe7f8ege6wv" path="res://Tilemap.tscn" id="2_mv7ic"]
 [ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://InGameUI.tscn" id="3_m8k3g"]
+[ext_resource type="PackedScene" uid="uid://cgm8j7er3a3mx" path="res://Enemy.tscn" id="5_4qjst"]
 
 [node name="World" type="Node2D"]
 position = Vector2(170, 393)
@@ -27,3 +28,9 @@ tile_map_data = PackedByteArray("AAAAAAEAAQACAAMAAAABAAEAAQACAAMAAAACAAEAAQACAAM
 [node name="DamageLayer" parent="." instance=ExtResource("2_mv7ic")]
 position = Vector2(-29, -10)
 tile_map_data = PackedByteArray("AAAGAPT/AAAAAAAAAAAJAPT/AAAAAAAAAAA=")
+
+[node name="Enemy" parent="." instance=ExtResource("5_4qjst")]
+position = Vector2(1148, 24)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_4qjst")]
+position = Vector2(111, 24)
