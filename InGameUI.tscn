@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch64e32vj1c4u"]
+
+[ext_resource type="Texture2D" uid="uid://wndcisieh1n" path="res://Images/kenney_ui-pack-space-expansion/PNG/Red/Default/bar_round_large.png" id="1_33eod"]
+[ext_resource type="Texture2D" uid="uid://df7pfjkq4fkty" path="res://Images/kenney_ui-pack-space-expansion/PNG/Green/Default/bar_round_large.png" id="2_gadmb"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 43.0
+scale = Vector2(1.79009, 1.95632)
+max_value = 10.0
+value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 6
+stretch_margin_top = 6
+stretch_margin_right = 6
+stretch_margin_bottom = 6
+texture_under = ExtResource("1_33eod")
+texture_progress = ExtResource("2_gadmb")

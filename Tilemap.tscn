@@ -1,6 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjqe7f8ege6wv"]
+[gd_scene load_steps=6 format=3 uid="uid://cjqe7f8ege6wv"]
 
 [ext_resource type="Texture2D" uid="uid://cfubej08mkr13" path="res://Images/PNG Grass/Spritesheet/sheet.png" id="1_j4kir"]
+[ext_resource type="Texture2D" uid="uid://tx70yea6tkg2" path="res://Images/Spike(1).png" id="1_j6103"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pgb0"]
+texture = ExtResource("1_j6103")
+texture_region_size = Vector2i(70, 70)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.125, -35, 35, 35, -35, 35)
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-0.375, -35, 35, 35, -35, 35)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wilxn"]
 texture = ExtResource("1_j4kir")
@@ -83,7 +91,10 @@ texture_region_size = Vector2i(70, 70)
 [sub_resource type="TileSet" id="TileSet_b8fva"]
 tile_size = Vector2i(70, 70)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 5
+physics_layer_1/collision_mask = 5
 sources/1 = SubResource("TileSetAtlasSource_wilxn")
+sources/0 = SubResource("TileSetAtlasSource_6pgb0")
 
 [node name="TileMapLayer" type="TileMapLayer"]
 tile_set = SubResource("TileSet_b8fva")
