@@ -13,6 +13,7 @@ const JUMP_VELOCITY = -600.0
 
 var was_on_floor
 var hp = 10
+var isDead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $Camera2D/Control/CanvasLayer/HealthBar
@@ -39,7 +40,10 @@ func _physics_process(delta: float) -> void:
 	
 	health_bar.value = hp
 
-
+	# stop all movements if character is dead
+	if isDead:
+			return
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(\"ui_left\", \"ui_right\")
@@ -55,8 +59,14 @@ func _physics_process(delta: float) -> void:
 
 func lose_health():
 	hp -= 1
+	if hp <= 0:
+			die()
 func gain_health():
 	hp += 1
+# add your custom behaviour when the character dies	
+func die():
+	self.rotation_degrees = 90
+	isDead = true
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	velocity.y = JUMP_VELOCITY
