@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmjs1mntieaic"]
+[gd_scene load_steps=9 format=3 uid="uid://dmjs1mntieaic"]
 
 [ext_resource type="Texture2D" uid="uid://dv8ubnb7k40od" path="res://Images/PlayerStill/_a_Frame1 copy.png" id="1_swvvb"]
 [ext_resource type="Texture2D" uid="uid://l74ghddi55de" path="res://Images/PlayerStill/_a_Frame1.png" id="2_jtlaq"]
+[ext_resource type="PackedScene" uid="uid://mr78l12aycpt" path="res://Camera.tscn" id="3_d3qek"]
+[ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://InGameUI.tscn" id="4_yli00"]
 
 [sub_resource type="GDScript" id="GDScript_jc3yj"]
 script/source = "extends CharacterBody2D
@@ -10,15 +12,17 @@ script/source = "extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 
+var spawner = null
 
 var was_on_floor
 var hp = 10
 var isDead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $Camera2D/Control/CanvasLayer/HealthBar
+@onready var health_bar = $\"Camera/in game UI/CanvasLayer/HealthBar\"
 @onready var the_bad_tiles = $\"../DamageLayer\"
 @onready var coyote_timer = $CoyoteTimer	
+@onready var death_timer = $DeathTimer
 
 
 func _physics_process(delta: float) -> void:	
@@ -38,11 +42,14 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		coyote_timer.stop()
 	
+	
 	health_bar.value = hp
 
 	# stop all movements if character is dead
 	if isDead:
-			return
+		if(death_timer.is_stopped()):
+			queue_free()
+		return
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -64,8 +71,10 @@ func lose_health():
 func gain_health():
 	hp += 1
 # add your custom behaviour when the character dies	
+# JK it goes to spawn after 3 seconds.
 func die():
 	self.rotation_degrees = 90
+	death_timer.start()
 	isDead = true
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
@@ -102,11 +111,7 @@ sprite_frames = SubResource("SpriteFrames_aeq82")
 animation = &"idle"
 frame_progress = 0.656603
 
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
-
-[node name="Collider" type="CollisionShape2D" parent="."]
+[node name="ObjectCollider" type="CollisionShape2D" parent="."]
 visibility_layer = 5
 position = Vector2(-1.5, 2)
 shape = SubResource("RectangleShape2D_68cqn")
@@ -115,9 +120,21 @@ shape = SubResource("RectangleShape2D_68cqn")
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="HurtboxCollider" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-2.25, 15)
 shape = SubResource("RectangleShape2D_lfyxs")
 debug_color = Color(0.776214, 0, 0.0615261, 0.42)
+
+[node name="Camera" parent="." instance=ExtResource("3_d3qek")]
+
+[node name="in game UI" parent="Camera" instance=ExtResource("4_yli00")]
+
+[node name="DeathTimer" type="Timer" parent="." groups=["player"]]
+wait_time = 3.0
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bla5yb4a4omvb"]
+
+[ext_resource type="Script" path="res://player_spawn.gd" id="1_ugjym"]
+[ext_resource type="Texture2D" uid="uid://ubj5tg2bjk88" path="res://Images/Checkpoint.png" id="2_stbg0"]
+
+[node name="PlayerSpawn" type="Node2D"]
+script = ExtResource("1_ugjym")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_stbg0")

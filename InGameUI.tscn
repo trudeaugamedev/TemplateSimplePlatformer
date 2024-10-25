@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://wndcisieh1n" path="res://Images/kenney_ui-pack-space-expansion/PNG/Red/Default/bar_round_large.png" id="1_33eod"]
 [ext_resource type="Texture2D" uid="uid://df7pfjkq4fkty" path="res://Images/kenney_ui-pack-space-expansion/PNG/Green/Default/bar_round_large.png" id="2_gadmb"]
 
-[node name="Control" type="Control"]
+[node name="in game UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
