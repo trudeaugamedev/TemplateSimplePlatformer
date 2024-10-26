@@ -1,11 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://dmjs1mntieaic"]
+[gd_scene load_steps=25 format=3 uid="uid://dmjs1mntieaic"]
 
 [ext_resource type="Texture2D" uid="uid://dv8ubnb7k40od" path="res://Images/Player/PlayerStill/_a_Frame1 copy.png" id="1_8jaed"]
+[ext_resource type="Texture2D" uid="uid://dqn06tdiubgob" path="res://Images/Player/PlayerDie/Layer 5(3).png" id="1_623o7"]
+[ext_resource type="Texture2D" uid="uid://d27pqla6mrfeh" path="res://Images/Player/PlayerDie/Layer 6(3).png" id="2_1d6b1"]
 [ext_resource type="Texture2D" uid="uid://l74ghddi55de" path="res://Images/Player/PlayerStill/_a_Frame1.png" id="2_mchl3"]
+[ext_resource type="Texture2D" uid="uid://dfurpcb3742ut" path="res://Images/Player/PlayerDie/Layer 7(2).png" id="3_b4dvk"]
 [ext_resource type="PackedScene" uid="uid://mr78l12aycpt" path="res://Camera.tscn" id="3_d3qek"]
 [ext_resource type="Texture2D" uid="uid://bcfckapf8bgjs" path="res://Images/Player/PlayerJump/Layer 2(4).png" id="3_mceq8"]
 [ext_resource type="Texture2D" uid="uid://nujc4hxy6ibb" path="res://Images/Player/PlayerJump/Layer 3(4).png" id="4_v2sug"]
+[ext_resource type="Texture2D" uid="uid://05cf81wpsqgo" path="res://Images/Player/PlayerDie/Layer 8(1).png" id="4_xouev"]
 [ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://InGameUI.tscn" id="4_yli00"]
+[ext_resource type="Texture2D" uid="uid://clmpy4bkryxy2" path="res://Images/Player/PlayerDie/Layer 1(8).png" id="5_gw6ow"]
 [ext_resource type="Texture2D" uid="uid://seknpslle60l" path="res://Images/Player/PlayerJump/Layer 4(3).png" id="5_q20l3"]
 [ext_resource type="Texture2D" uid="uid://buwlrdclu4cyl" path="res://Images/Player/PlayerWalk/Left/Layer 1(8).png" id="6_tld3m"]
 [ext_resource type="Texture2D" uid="uid://dnbiu14oyyv02" path="res://Images/Player/PlayerWalk/Left/Layer 2(4).png" id="7_7jhbc"]
@@ -26,7 +31,7 @@ script/source = "extends CharacterBody2D
 var spawner = null
 
 var was_on_floor
-@export var  hp = 10
+@export var hp = 2
 var isDead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
@@ -35,19 +40,23 @@ var isDead = false
 @onready var death_timer = $DeathTimer
 
 func _ready() -> void:
+	#sets max value of the healthbar to hp upon starting
+	isDead = false
 	health_bar.max_value = hp
 
 
 func _physics_process(delta: float) -> void:	
-		
-	if not is_on_floor():
-		_animated_sprite.play(\"jump\")
-	elif Input.is_action_pressed(\"ui_right\"):
-		_animated_sprite.play(\"right\")
-	elif Input.is_action_pressed(\"ui_left\"):
-		_animated_sprite.play(\"left\")
-	else:
-		_animated_sprite.play(\"idle\")
+	#Animations
+	if not isDead:
+		if not is_on_floor():
+			_animated_sprite.play(\"jump\")
+		elif Input.is_action_pressed(\"ui_right\"):
+			_animated_sprite.play(\"right\")
+		elif Input.is_action_pressed(\"ui_left\"):
+			_animated_sprite.play(\"left\")
+		else:
+			_animated_sprite.play(\"idle\")
+
 		
 	was_on_floor = is_on_floor()
 	# Add the gravity. Manages Coyote Time
@@ -59,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		coyote_timer.stop()
 	
-	
+	#Sets healthbar visuals to current HP
 	health_bar.value = hp
 
 	# stop all movements if character is dead
@@ -76,8 +85,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	# Move and slide is how the character moves.
 	move_and_slide()
 	
+	#Start coyote timer if you are no longer on a platform
 	if was_on_floor && !is_on_floor():
 		coyote_timer.start()
 
@@ -88,15 +99,15 @@ func kill_self():
 	
 func lose_health():
 	hp -= 1
-	if hp <= 0:
+	if hp <= 0 && not isDead:
 			die()
 			
 func gain_health():
 	hp += 1
-# add your custom behaviour when the character dies	
-# JK it goes to spawn after 3 seconds.
+
+# Death
 func die():
-	self.rotation_degrees = 90
+	_animated_sprite.play(\"die\")
 	death_timer.start()
 	isDead = true
 
@@ -109,6 +120,26 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aeq82"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_623o7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1d6b1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b4dvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xouev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gw6ow")
+}],
+"loop": false,
+"name": &"die",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_8jaed")
@@ -130,7 +161,7 @@ animations = [{
 "duration": 31.2,
 "texture": ExtResource("5_q20l3")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 12.0
 }, {
@@ -177,11 +208,14 @@ size = Vector2(42.5, 99)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = SubResource("GDScript_jc3yj")
+hp = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2925, 0.2925)
 sprite_frames = SubResource("SpriteFrames_aeq82")
-animation = &"right"
+animation = &"die"
+frame = 4
+frame_progress = 1.0
 
 [node name="ObjectCollider" type="CollisionShape2D" parent="."]
 visibility_layer = 5
