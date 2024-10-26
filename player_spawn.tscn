@@ -1,10 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://bla5yb4a4omvb"]
+[gd_scene load_steps=8 format=3 uid="uid://bla5yb4a4omvb"]
 
 [ext_resource type="Script" path="res://player_spawn.gd" id="1_ugjym"]
-[ext_resource type="Texture2D" uid="uid://ubj5tg2bjk88" path="res://Images/Checkpoint.png" id="2_stbg0"]
+[ext_resource type="Texture2D" uid="uid://bk6qsenbya3qg" path="res://Images/Spawn/Respawn(1).png" id="2_2poap"]
+[ext_resource type="Texture2D" uid="uid://cmfqyr0vky2br" path="res://Images/Spawn/Respawn(2).png" id="3_vunbt"]
+[ext_resource type="Texture2D" uid="uid://bck2ntmorool5" path="res://Images/Spawn/Respawn.png" id="4_xyywp"]
+[ext_resource type="Texture2D" uid="uid://dokkvxlcs2t8l" path="res://Images/Spawn/Spike(1)(1).png" id="5_hbetc"]
+[ext_resource type="Texture2D" uid="uid://mgnf1hpgo5li" path="res://Images/Spawn/Spike(1).png" id="6_kium3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rkgix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xyywp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2poap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vunbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kium3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hbetc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kium3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vunbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2poap")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="PlayerSpawn" type="Node2D"]
 script = ExtResource("1_ugjym")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_stbg0")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rkgix")
+frame_progress = 0.413884

@@ -1,18 +1,20 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_SPEED = -600.0
+@export var SPEED = 300.0
+@export var JUMP_SPEED = -600.0 #Negative is up
 var direction = 1
 var hasJumped = true;
+@export var canJump = true;
 
 func _ready():
+	#Animation
 	$AnimatedSprite2D.play("moving")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		if (randi() % 20 == 1 && !hasJumped):
+		if (randi() % 20 == 1 && !hasJumped && canJump):
 			jump() # chance of jumping in air once
 			hasJumped = true
 		else:
