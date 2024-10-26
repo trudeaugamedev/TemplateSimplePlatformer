@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3f7c"]
-size = Vector2(79, 18)
+size = Vector2(83, 39)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vah5"]
 size = Vector2(79, 71)
@@ -50,7 +50,7 @@ frame_progress = 0.914267
 position = Vector2(0.5, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
-position = Vector2(0, -45)
+position = Vector2(0, -55.5)
 shape = SubResource("RectangleShape2D_f3f7c")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
