@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var JUMP_SPEED = -600.0 #Negative is up
 var direction = 1
 var hasJumped = true;
-@export var canJump = true;
+@export var canJump = false;
 
 func _ready():
 	#Animation
@@ -23,10 +23,10 @@ func _physics_process(delta: float) -> void:
 		hasJumped = false;
 		
 	if (!$Hitbox/DownRay.is_colliding() or $Hitbox/SideRay.is_colliding()) and is_on_floor():
-		if ($Hitbox/SideRay.is_colliding() && (randi() % 2 == 0)):
+		if ($Hitbox/SideRay.is_colliding() && (randi() % 2 == 0) && canJump):
 			jump()
 		else: 
-			if (randi() % 5 != 0):
+			if (randi() % 5 != 0 || !canJump):
 				flip()
 			else:
 				jump()

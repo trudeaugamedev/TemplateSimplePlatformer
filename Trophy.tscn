@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp5wjdgt11oic"]
+
+[ext_resource type="Texture2D" uid="uid://bvog5kh35y5f2" path="res://Images/Trophy.png" id="1_uj680"]
+[ext_resource type="Script" path="res://trophy.gd" id="2_juxca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2whh"]
+size = Vector2(66, 58)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3w1p"]
+
+[node name="Objective" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uj680")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Objective"]]
+script = ExtResource("2_juxca")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_f2whh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -513.0
+offset_top = -250.0
+offset_right = -436.0
+offset_bottom = -227.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(12.96, 8.84)
+text = "You Win!!!"
+label_settings = SubResource("LabelSettings_m3w1p")
+
+[connection signal="body_shape_entered" from="Hitbox" to="Hitbox" method="_on_body_shape_entered"]
