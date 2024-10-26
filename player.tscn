@@ -1,9 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmjs1mntieaic"]
+[gd_scene load_steps=20 format=3 uid="uid://dmjs1mntieaic"]
 
-[ext_resource type="Texture2D" uid="uid://dv8ubnb7k40od" path="res://Images/PlayerStill/_a_Frame1 copy.png" id="1_swvvb"]
-[ext_resource type="Texture2D" uid="uid://l74ghddi55de" path="res://Images/PlayerStill/_a_Frame1.png" id="2_jtlaq"]
+[ext_resource type="Texture2D" uid="uid://dv8ubnb7k40od" path="res://Images/Player/PlayerStill/_a_Frame1 copy.png" id="1_8jaed"]
+[ext_resource type="Texture2D" uid="uid://l74ghddi55de" path="res://Images/Player/PlayerStill/_a_Frame1.png" id="2_mchl3"]
 [ext_resource type="PackedScene" uid="uid://mr78l12aycpt" path="res://Camera.tscn" id="3_d3qek"]
+[ext_resource type="Texture2D" uid="uid://bcfckapf8bgjs" path="res://Images/Player/PlayerJump/Layer 2(4).png" id="3_mceq8"]
+[ext_resource type="Texture2D" uid="uid://nujc4hxy6ibb" path="res://Images/Player/PlayerJump/Layer 3(4).png" id="4_v2sug"]
 [ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://InGameUI.tscn" id="4_yli00"]
+[ext_resource type="Texture2D" uid="uid://seknpslle60l" path="res://Images/Player/PlayerJump/Layer 4(3).png" id="5_q20l3"]
+[ext_resource type="Texture2D" uid="uid://buwlrdclu4cyl" path="res://Images/Player/PlayerWalk/Left/Layer 1(8).png" id="6_tld3m"]
+[ext_resource type="Texture2D" uid="uid://dnbiu14oyyv02" path="res://Images/Player/PlayerWalk/Left/Layer 2(4).png" id="7_7jhbc"]
+[ext_resource type="Texture2D" uid="uid://dnldln147bgok" path="res://Images/Player/PlayerWalk/Left/Layer 3(4).png" id="8_wkshg"]
+[ext_resource type="Texture2D" uid="uid://c326ntmu2hif" path="res://Images/Player/PlayerWalk/Left/Layer 4(3).png" id="9_8dcxj"]
+[ext_resource type="Texture2D" uid="uid://4fe3ycs244q5" path="res://Images/Player/PlayerWalk/Right/Layer 1(8).png" id="10_3vui6"]
+[ext_resource type="Texture2D" uid="uid://dvvlwcjqyg0pf" path="res://Images/Player/PlayerWalk/Right/Layer 2(4).png" id="11_0tmyq"]
+[ext_resource type="Texture2D" uid="uid://d1da2da314clk" path="res://Images/Player/PlayerWalk/Right/Layer 3(4).png" id="12_0rpfg"]
+[ext_resource type="Texture2D" uid="uid://dms345fp71x5" path="res://Images/Player/PlayerWalk/Right/Layer 4(3).png" id="13_8ug5u"]
 
 [sub_resource type="GDScript" id="GDScript_jc3yj"]
 script/source = "extends CharacterBody2D
@@ -29,8 +40,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:	
 		
-	if Input.is_action_pressed(\"ui_right\"):
-		_animated_sprite.play(\"idle\")
+	if not is_on_floor():
+		_animated_sprite.play(\"jump\")
+	elif Input.is_action_pressed(\"ui_right\"):
+		_animated_sprite.play(\"right\")
+	elif Input.is_action_pressed(\"ui_left\"):
+		_animated_sprite.play(\"left\")
 	else:
 		_animated_sprite.play(\"idle\")
 		
@@ -96,14 +111,62 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_swvvb")
+"texture": ExtResource("1_8jaed")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_jtlaq")
+"texture": ExtResource("2_mchl3")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mceq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v2sug")
+}, {
+"duration": 31.2,
+"texture": ExtResource("5_q20l3")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_tld3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7jhbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wkshg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8dcxj")
+}],
+"loop": true,
+"name": &"left",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_3vui6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0tmyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0rpfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8ug5u")
+}],
+"loop": true,
+"name": &"right",
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68cqn"]
@@ -118,8 +181,7 @@ script = SubResource("GDScript_jc3yj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2925, 0.2925)
 sprite_frames = SubResource("SpriteFrames_aeq82")
-animation = &"idle"
-frame_progress = 0.656603
+animation = &"right"
 
 [node name="ObjectCollider" type="CollisionShape2D" parent="."]
 visibility_layer = 5

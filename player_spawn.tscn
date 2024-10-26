@@ -44,4 +44,4 @@ script = ExtResource("1_ugjym")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rkgix")
-frame_progress = 0.611439
+frame_progress = 0.808853

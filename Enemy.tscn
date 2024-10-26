@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgm8j7er3a3mx"]
+[gd_scene load_steps=9 format=3 uid="uid://cgm8j7er3a3mx"]
 
 [ext_resource type="Script" path="res://basic_enemy.gd" id="1_we5as"]
 [ext_resource type="Texture2D" uid="uid://pyktyvyb3bkt" path="res://Images/Enemy/Amogi.png" id="2_rlggl"]
@@ -25,6 +25,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3f7c"]
+size = Vector2(79, 18)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vah5"]
 size = Vector2(79, 71)
 
@@ -42,6 +45,13 @@ script = ExtResource("1_we5as")
 sprite_frames = SubResource("SpriteFrames_q7n4o")
 animation = &"moving"
 frame_progress = 0.914267
+
+[node name="Killbox" type="Area2D" parent="."]
+position = Vector2(0.5, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(0, -45)
+shape = SubResource("RectangleShape2D_f3f7c")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4)
@@ -63,3 +73,5 @@ debug_color = Color(0.776214, 0, 0.0615261, 0.42)
 [node name="SideRay" type="RayCast2D" parent="Hitbox"]
 position = Vector2(16, 39)
 target_position = Vector2(25, 0)
+
+[connection signal="body_shape_entered" from="Killbox" to="." method="_on_killbox_body_shape_entered"]

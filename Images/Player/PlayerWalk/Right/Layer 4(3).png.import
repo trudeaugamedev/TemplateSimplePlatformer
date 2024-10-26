@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv8ubnb7k40od"
-path="res://.godot/imported/_a_Frame1 copy.png-3b8662ff7c9b9be0f4cbbd93d6eddf39.ctex"
+uid="uid://dms345fp71x5"
+path="res://.godot/imported/Layer 4(3).png-e8807c0efc726a7d44a7339081ad498d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/PlayerStill/_a_Frame1 copy.png"
-dest_files=["res://.godot/imported/_a_Frame1 copy.png-3b8662ff7c9b9be0f4cbbd93d6eddf39.ctex"]
+source_file="res://Images/Player/PlayerWalk/Right/Layer 4(3).png"
+dest_files=["res://.godot/imported/Layer 4(3).png-e8807c0efc726a7d44a7339081ad498d.ctex"]
 
 [params]
 

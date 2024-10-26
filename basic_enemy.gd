@@ -40,3 +40,8 @@ func jump():
 func flip():
 	direction = -direction
 	scale.x *= -1
+
+
+func _on_killbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	if(body.is_in_group("player") && body.velocity.y > 0):
+		queue_free()
