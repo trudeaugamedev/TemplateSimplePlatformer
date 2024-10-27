@@ -65,8 +65,7 @@ func _physics_process(delta: float) -> void:
 		
 	# Handle jump.
 	if Input.is_action_just_pressed(\"ui_accept\") && (is_on_floor() || !coyote_timer.is_stopped()):
-		velocity.y = JUMP_VELOCITY
-		coyote_timer.stop()
+		jump()
 	
 	#Sets healthbar visuals to current HP
 	health_bar.value = hp
@@ -104,6 +103,11 @@ func lose_health():
 			
 func gain_health():
 	hp += 1
+	
+# Jump
+func jump():
+	velocity.y = JUMP_VELOCITY
+	coyote_timer.stop()
 
 # Death
 func die():
@@ -232,6 +236,7 @@ shape = SubResource("RectangleShape2D_lfyxs")
 debug_color = Color(0.776214, 0, 0.0615261, 0.42)
 
 [node name="Camera" parent="." instance=ExtResource("3_d3qek")]
+zoom = Vector2(1.5, 1.5)
 
 [node name="in game UI" parent="Camera" instance=ExtResource("4_yli00")]
 
