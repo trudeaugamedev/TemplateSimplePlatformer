@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cfubej08mkr13" path="res://Images/PNG Grass/Spritesheet/sheet.png" id="1_j4kir"]
 [ext_resource type="Texture2D" uid="uid://ceox0e72tmq4i" path="res://Images/Spike(1).png" id="1_j6103"]
-[ext_resource type="PackedScene" uid="uid://hrtrk2u6p5x0" path="res://checkpoint.tscn" id="3_08iof"]
+[ext_resource type="PackedScene" path="res://checkpoint.tscn" id="3_08iof"]
 [ext_resource type="PackedScene" uid="uid://cgm8j7er3a3mx" path="res://Enemy.tscn" id="4_u0kpp"]
-[ext_resource type="PackedScene" uid="uid://bla5yb4a4omvb" path="res://player_spawn.tscn" id="5_j5b7x"]
-[ext_resource type="PackedScene" uid="uid://bp5wjdgt11oic" path="res://Trophy.tscn" id="6_p3eq6"]
+[ext_resource type="PackedScene" uid="uid://cwdgxcvmantbr" path="res://player_spawn.tscn" id="5_j5b7x"]
+[ext_resource type="PackedScene" path="res://Trophy.tscn" id="6_p3eq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pgb0"]
 texture = ExtResource("1_j6103")
