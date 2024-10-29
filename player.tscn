@@ -143,8 +143,4 @@ zoom = Vector2(1.5, 1.5)
 wait_time = 3.0
 one_shot = true
 
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.15
-one_shot = true
-
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
