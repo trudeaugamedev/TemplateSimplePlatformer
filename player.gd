@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-@export var  SPEED = 300.0
-@export var  JUMP_VELOCITY = -600.0
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -600.0
 
 @export var hp = 2
 var spawner = null
@@ -18,7 +18,7 @@ func _ready() -> void:
 	health_bar.max_value = hp
 
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	#Animations
 	if not isDead:
 		if not is_on_floor():
