@@ -1,27 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwdgxcvmantbr"]
+[gd_scene load_steps=6 format=3 uid="uid://bla5yb4a4omvb"]
 
 [ext_resource type="Script" path="res://player_spawn.gd" id="1_ugjym"]
 [ext_resource type="Texture2D" uid="uid://bk6qsenbya3qg" path="res://Images/Spawn/Respawn(1).png" id="2_2poap"]
-[ext_resource type="Texture2D" uid="uid://c4f3ltcksrxmm" path="res://Images/Spawn/4.png" id="2_dagl2"]
-[ext_resource type="Texture2D" uid="uid://b3e25stcworvu" path="res://Images/Spawn/Respawn3.png" id="3_0j0kl"]
 [ext_resource type="Texture2D" uid="uid://cmfqyr0vky2br" path="res://Images/Spawn/Respawn(2).png" id="3_vunbt"]
 [ext_resource type="Texture2D" uid="uid://bck2ntmorool5" path="res://Images/Spawn/Respawn.png" id="4_xyywp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rkgix"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_dagl2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_0j0kl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_vunbt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_2poap")
-}, {
 "duration": 1.0,
 "texture": ExtResource("4_xyywp")
 }, {
@@ -32,7 +18,19 @@ animations = [{
 "texture": ExtResource("3_vunbt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_0j0kl")
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vunbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2poap")
 }],
 "loop": true,
 "name": &"default",
