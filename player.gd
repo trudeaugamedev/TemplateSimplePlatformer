@@ -9,7 +9,7 @@ var spawner = null
 var isDead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $"in game UI/CanvasLayer/HealthBar"
+@onready var health_bar = $"../../in game UI/CanvasLayer/HealthBar"
 @onready var death_timer = $DeathTimer
 
 func _ready() -> void:

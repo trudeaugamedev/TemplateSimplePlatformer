@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://bx5stau0mvgj0"]
+[gd_scene load_steps=5 format=4 uid="uid://bx5stau0mvgj0"]
 
+[ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://InGameUI.tscn" id="2_bug14"]
 [ext_resource type="PackedScene" uid="uid://cjqe7f8ege6wv" path="res://Tilemap.tscn" id="2_mv7ic"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qalep"]
@@ -29,7 +30,9 @@ shape = SubResource("SegmentShape2D_qalep")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/Death Zone"]
 shape = SubResource("SegmentShape2D_jbftp")
 
+[node name="in game UI" parent="." instance=ExtResource("2_bug14")]
+
 [connection signal="body_shape_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@22478" to="TileMapLayer/@Area2D@22478" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@22479" to="TileMapLayer/@Area2D@22479" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@22481" to="TileMapLayer/@Area2D@22481" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@83947" to="TileMapLayer/@Area2D@83947" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@83948" to="TileMapLayer/@Area2D@83948" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@83950" to="TileMapLayer/@Area2D@83950" method="_on_body_shape_entered"]
