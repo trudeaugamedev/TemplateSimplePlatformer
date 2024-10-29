@@ -11,7 +11,7 @@ var was_on_floor
 var isDead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $"Camera/in game UI/CanvasLayer/HealthBar"
+@onready var health_bar = $"in game UI/CanvasLayer/HealthBar"
 @onready var coyote_timer = $CoyoteTimer	
 @onready var death_timer = $DeathTimer
 
