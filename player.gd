@@ -9,7 +9,7 @@ var spawner = null
 var isDead = false
 
 @onready var _animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $"../../in game UI/CanvasLayer/HealthBar"
+@onready var health_bar = get_tree().root.find_child("HealthBar", true, false)
 @onready var death_timer = $DeathTimer
 
 func _ready() -> void:
@@ -21,21 +21,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#Animations
 	if not isDead:
-		if not is_on_floor():
-			_animated_sprite.play("jump")
-		elif Input.is_action_pressed("ui_right"):
-			_animated_sprite.play("right")
-		elif Input.is_action_pressed("ui_left"):
-			_animated_sprite.play("left")
-		else:
-			_animated_sprite.play("idle")
+		pass
 
 	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
 		
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") && (is_on_floor()):
+	# Add jump.
+	# Add another condition to be able to jump
+	if Input.is_action_just_pressed("ui_accept"):
 		jump()
 	
 	# Sets healthbar visuals to current HP
@@ -51,9 +43,11 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * SPEED
+		# Is moving
+		pass 
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		# Isn't moving
+		pass
 
 	# Move and slide is how the character moves.
 	move_and_slide()
@@ -73,16 +67,13 @@ func gain_health():
 
 # Jump
 func jump():
-	velocity.y = JUMP_VELOCITY
+	pass
 
 # Death
 func die():
-	_animated_sprite.play("die")
 	death_timer.start()
 	isDead = true
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	velocity.y = -100+JUMP_VELOCITY
-	lose_health()
-	if body.is_in_group("instant_death"):
-		kill_self()
+	# When it hits something that should do damage
+	pass
