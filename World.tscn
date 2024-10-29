@@ -30,9 +30,9 @@ shape = SubResource("SegmentShape2D_qalep")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/Death Zone"]
 shape = SubResource("SegmentShape2D_jbftp")
 
-[node name="in game UI" parent="." instance=ExtResource("2_bug14")]
+[node name="HUD" parent="." instance=ExtResource("2_bug14")]
 
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39159" to="TileMapLayer/@Area2D@39159" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39160" to="TileMapLayer/@Area2D@39160" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39161" to="TileMapLayer/@Area2D@39161" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39163" to="TileMapLayer/@Area2D@39163" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@18881" to="TileMapLayer/@Area2D@18881" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@18882" to="TileMapLayer/@Area2D@18882" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@18884" to="TileMapLayer/@Area2D@18884" method="_on_body_shape_entered"]
