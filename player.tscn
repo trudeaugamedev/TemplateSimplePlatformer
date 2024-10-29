@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dmjs1mntieaic"]
+[gd_scene load_steps=23 format=3 uid="uid://dmjs1mntieaic"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5xm5c"]
 [ext_resource type="Texture2D" uid="uid://dv8ubnb7k40od" path="res://Images/Player/PlayerStill/_a_Frame1 copy.png" id="1_8jaed"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://d27pqla6mrfeh" path="res://Images/Player/PlayerDie/Layer 6(3).png" id="2_1d6b1"]
 [ext_resource type="Texture2D" uid="uid://l74ghddi55de" path="res://Images/Player/PlayerStill/_a_Frame1.png" id="2_mchl3"]
 [ext_resource type="Texture2D" uid="uid://dfurpcb3742ut" path="res://Images/Player/PlayerDie/Layer 7(2).png" id="3_b4dvk"]
-[ext_resource type="PackedScene" uid="uid://mr78l12aycpt" path="res://Camera.tscn" id="3_d3qek"]
 [ext_resource type="Texture2D" uid="uid://bcfckapf8bgjs" path="res://Images/Player/PlayerJump/Layer 2(4).png" id="3_mceq8"]
 [ext_resource type="Texture2D" uid="uid://nujc4hxy6ibb" path="res://Images/Player/PlayerJump/Layer 3(4).png" id="4_v2sug"]
 [ext_resource type="Texture2D" uid="uid://05cf81wpsqgo" path="res://Images/Player/PlayerDie/Layer 8(1).png" id="4_xouev"]
@@ -133,8 +132,10 @@ position = Vector2(-2, 2.5)
 shape = SubResource("RectangleShape2D_lfyxs")
 debug_color = Color(0.776214, 0, 0.0615261, 0.42)
 
-[node name="Camera" parent="." instance=ExtResource("3_d3qek")]
+[node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="DeathTimer" type="Timer" parent="." groups=["player"]]
 wait_time = 3.0
