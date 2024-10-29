@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 	# Stop all movements if character is dead
 	if isDead:
-		if(death_timer.is_stopped()):
+		if death_timer.is_stopped():
 			queue_free()
 		return
 	
@@ -84,5 +84,5 @@ func die():
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	velocity.y = -100+JUMP_VELOCITY
 	lose_health()
-	if(body.is_in_group("instant_death")):
+	if body.is_in_group("instant_death"):
 		kill_self()
