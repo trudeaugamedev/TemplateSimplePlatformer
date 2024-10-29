@@ -10,7 +10,7 @@ size = Vector2(66, 58)
 
 [node name="Objective" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_uj680")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Objective"]]

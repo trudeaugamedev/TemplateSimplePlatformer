@@ -8,7 +8,7 @@ extends CharacterBody2D
 var spawner = null
 var isDead = false
 
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var animation = $Animation
 @onready var health_bar = get_tree().root.find_child("HealthBar", true, false)
 @onready var death_timer = $DeathTimer
 

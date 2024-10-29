@@ -3,7 +3,7 @@ extends Node2D
 var player_scene = preload("res://player.tscn")
 var player = null
 
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $Animation
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

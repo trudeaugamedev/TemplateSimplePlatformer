@@ -9,7 +9,7 @@ var hasJumped = true
 
 func _ready():
 	# Animation
-	$AnimatedSprite2D.play("moving")
+	$Animation.play("moving")
 
 
 func _physics_process(delta: float) -> void:
