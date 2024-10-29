@@ -28,8 +28,3 @@ shape = SubResource("SegmentShape2D_qalep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/Death Zone"]
 shape = SubResource("SegmentShape2D_jbftp")
-
-[connection signal="body_shape_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@18152" to="TileMapLayer/@Area2D@18152" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@18153" to="TileMapLayer/@Area2D@18153" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@18155" to="TileMapLayer/@Area2D@18155" method="_on_body_shape_entered"]

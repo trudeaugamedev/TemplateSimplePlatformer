@@ -217,9 +217,7 @@ hp = 4
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2925, 0.2925)
 sprite_frames = SubResource("SpriteFrames_aeq82")
-animation = &"die"
-frame = 4
-frame_progress = 1.0
+animation = &"jump"
 
 [node name="ObjectCollider" type="CollisionShape2D" parent="."]
 visibility_layer = 5
