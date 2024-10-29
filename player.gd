@@ -67,7 +67,3 @@ func jump():
 func die():
 	death_timer.start()
 	isDead = true
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	# When it hits something that should do damage
-	pass
