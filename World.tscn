@@ -1,22 +1,22 @@
 [gd_scene load_steps=14 format=4 uid="uid://bx5stau0mvgj0"]
 
-[ext_resource type="Texture2D" uid="uid://ceox0e72tmq4i" path="res://Images/Spike.png" id="1_8xvap"]
-[ext_resource type="Texture2D" uid="uid://cfubej08mkr13" path="res://Images/PNG Grass/Spritesheet/sheet.png" id="2_60rsl"]
-[ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://InGameUI.tscn" id="2_bug14"]
-[ext_resource type="PackedScene" uid="uid://hrtrk2u6p5x0" path="res://checkpoint.tscn" id="3_wss0w"]
-[ext_resource type="PackedScene" uid="uid://cgm8j7er3a3mx" path="res://Enemy.tscn" id="4_ojbgu"]
-[ext_resource type="PackedScene" uid="uid://cwdgxcvmantbr" path="res://player_spawn.tscn" id="5_wu6wf"]
-[ext_resource type="PackedScene" uid="uid://bp5wjdgt11oic" path="res://Trophy.tscn" id="6_hcjaw"]
+[ext_resource type="Texture2D" uid="uid://ceox0e72tmq4i" path="res://Images/Spike.png" id="1_oir36"]
+[ext_resource type="Texture2D" uid="uid://cfubej08mkr13" path="res://Images/PNG Grass/Spritesheet/sheet.png" id="2_a3ce7"]
+[ext_resource type="PackedScene" uid="uid://hrtrk2u6p5x0" path="res://checkpoint.tscn" id="3_j5x72"]
+[ext_resource type="PackedScene" uid="uid://cgm8j7er3a3mx" path="res://enemy.tscn" id="4_8cqa5"]
+[ext_resource type="PackedScene" uid="uid://cwdgxcvmantbr" path="res://player_spawn.tscn" id="5_faas1"]
+[ext_resource type="PackedScene" uid="uid://bp5wjdgt11oic" path="res://trophy.tscn" id="6_76g2y"]
+[ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://hud.tscn" id="7_xqiab"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pgb0"]
-texture = ExtResource("1_8xvap")
+texture = ExtResource("1_oir36")
 texture_region_size = Vector2i(70, 70)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.125, -35, 35, 35, -35, 35)
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-0.125, -41.75, 36.625, 39.25, -37.125, 38.5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wilxn"]
-texture = ExtResource("2_60rsl")
+texture = ExtResource("2_a3ce7")
 texture_region_size = Vector2i(70, 70)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 5, -35, 5)
@@ -93,10 +93,10 @@ texture_region_size = Vector2i(70, 70)
 4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 5, -35, 5)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qjnx3"]
-scenes/1/scene = ExtResource("3_wss0w")
-scenes/2/scene = ExtResource("4_ojbgu")
-scenes/3/scene = ExtResource("5_wu6wf")
-scenes/4/scene = ExtResource("6_hcjaw")
+scenes/1/scene = ExtResource("3_j5x72")
+scenes/2/scene = ExtResource("4_8cqa5")
+scenes/3/scene = ExtResource("5_faas1")
+scenes/4/scene = ExtResource("6_76g2y")
 
 [sub_resource type="TileSet" id="TileSet_b8fva"]
 tile_size = Vector2i(70, 70)
@@ -135,4 +135,4 @@ shape = SubResource("SegmentShape2D_jbftp")
 position = Vector2(-2790, -2050)
 shape = SubResource("SegmentShape2D_qalep")
 
-[node name="HUD" parent="." instance=ExtResource("2_bug14")]
+[node name="HUD" parent="." instance=ExtResource("7_xqiab")]
