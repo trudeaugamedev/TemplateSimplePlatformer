@@ -32,7 +32,7 @@ shape = SubResource("SegmentShape2D_jbftp")
 
 [node name="in game UI" parent="." instance=ExtResource("2_bug14")]
 
-[connection signal="body_shape_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@83947" to="TileMapLayer/@Area2D@83947" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@83948" to="TileMapLayer/@Area2D@83948" method="_on_body_shape_entered"]
-[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@83950" to="TileMapLayer/@Area2D@83950" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39159" to="TileMapLayer/@Area2D@39159" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39160" to="TileMapLayer/@Area2D@39160" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39161" to="TileMapLayer/@Area2D@39161" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@39163" to="TileMapLayer/@Area2D@39163" method="_on_body_shape_entered"]
