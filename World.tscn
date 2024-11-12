@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ceox0e72tmq4i" path="res://Images/Spike.png" id="1_oir36"]
 [ext_resource type="Texture2D" uid="uid://cfubej08mkr13" path="res://Images/PNG Grass/Spritesheet/sheet.png" id="2_a3ce7"]
 [ext_resource type="PackedScene" uid="uid://hrtrk2u6p5x0" path="res://checkpoint.tscn" id="3_j5x72"]
-[ext_resource type="PackedScene" uid="uid://cgm8j7er3a3mx" path="res://enemy.tscn" id="4_8cqa5"]
+[ext_resource type="PackedScene" uid="uid://cgm8j7er3a3mx" path="res://Enemy.tscn" id="4_8cqa5"]
 [ext_resource type="PackedScene" uid="uid://cwdgxcvmantbr" path="res://player_spawn.tscn" id="5_faas1"]
-[ext_resource type="PackedScene" uid="uid://bp5wjdgt11oic" path="res://trophy.tscn" id="6_76g2y"]
-[ext_resource type="PackedScene" uid="uid://ch64e32vj1c4u" path="res://hud.tscn" id="7_xqiab"]
+[ext_resource type="PackedScene" uid="uid://bp5wjdgt11oic" path="res://Trophy.tscn" id="6_76g2y"]
+[ext_resource type="PackedScene" path="res://hud.tscn" id="7_xqiab"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pgb0"]
 texture = ExtResource("1_oir36")
@@ -136,3 +136,8 @@ position = Vector2(-2790, -2050)
 shape = SubResource("SegmentShape2D_qalep")
 
 [node name="HUD" parent="." instance=ExtResource("7_xqiab")]
+
+[connection signal="body_shape_entered" from="TileMapLayer/Checkpoint" to="TileMapLayer/Checkpoint" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@20232" to="TileMapLayer/@Area2D@20232" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@20233" to="TileMapLayer/@Area2D@20233" method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="TileMapLayer/@Area2D@20235" to="TileMapLayer/@Area2D@20235" method="_on_body_shape_entered"]

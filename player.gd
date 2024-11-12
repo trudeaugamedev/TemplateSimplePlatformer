@@ -24,10 +24,12 @@ func _physics_process(delta: float) -> void:
 		pass
 
 	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 		
 	# Add jump.
 	# Add another condition to be able to jump
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		jump()
 	
 	# Sets healthbar visuals to current HP
@@ -42,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
-
+	velocity.x = direction * SPEED
 	# Move and slide is how the character moves.
 	move_and_slide()
 
@@ -61,9 +63,15 @@ func gain_health():
 
 # Jump
 func jump():
-	pass
+	velocity.y = JUMP_VELOCITY
 
 # Death
 func die():
 	death_timer.start()
 	isDead = true
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	lose_health()
+	if body.is_in_group("instant_death"):
+		kill_self()
