@@ -1,7 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp5wjdgt11oic"]
+[gd_scene load_steps=12 format=3 uid="uid://bp5wjdgt11oic"]
 
-[ext_resource type="Texture2D" uid="uid://bvog5kh35y5f2" path="res://Images/Trophy.png" id="1_uj680"]
+[ext_resource type="Texture2D" uid="uid://b5yevm4kbdasr" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_1.png" id="1_28goe"]
+[ext_resource type="Texture2D" uid="uid://dtvxij4tel71s" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_2.png" id="2_4iq0f"]
 [ext_resource type="Script" path="res://trophy.gd" id="2_juxca"]
+[ext_resource type="Texture2D" uid="uid://dfvg6au30y8c3" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_3.png" id="3_klkeh"]
+[ext_resource type="Texture2D" uid="uid://d2b7fmedn8uoi" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_4.png" id="4_fw8gy"]
+[ext_resource type="Texture2D" uid="uid://cnw4pfe2ajac3" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_5.png" id="5_v1jdw"]
+[ext_resource type="Texture2D" uid="uid://b05t7ohuywsr7" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_6.png" id="6_y5hh8"]
+[ext_resource type="Texture2D" uid="uid://b0o0longgcg7i" path="res://Images/Lesson 6 Game-Asset Collection/Trophy/trophy_7.png" id="7_2yl3a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qd4yo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_28goe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4iq0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_klkeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fw8gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v1jdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y5hh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2yl3a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2whh"]
 size = Vector2(66, 58)
@@ -10,8 +45,10 @@ size = Vector2(66, 58)
 
 [node name="Objective" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_uj680")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_qd4yo")
+frame_progress = 0.37055
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Objective"]]
 script = ExtResource("2_juxca")
