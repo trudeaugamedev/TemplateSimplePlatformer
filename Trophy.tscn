@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp5wjdgt11oic"]
 
 [ext_resource type="Texture2D" uid="uid://bvog5kh35y5f2" path="res://Images/Trophy.png" id="1_uj680"]
-[ext_resource type="Script" path="res://trophy.gd" id="2_juxca"]
+[ext_resource type="Script" uid="uid://dxtjm602gf8qy" path="res://trophy.gd" id="2_juxca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2whh"]
 size = Vector2(66, 58)

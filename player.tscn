@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://dmjs1mntieaic"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_5xm5c"]
+[ext_resource type="Script" uid="uid://wubwxl8ihgw1" path="res://player.gd" id="1_5xm5c"]
 [ext_resource type="Texture2D" uid="uid://dv8ubnb7k40od" path="res://Images/Player/PlayerStill/_a_Frame1 copy.png" id="1_8jaed"]
 [ext_resource type="Texture2D" uid="uid://dqn06tdiubgob" path="res://Images/Player/PlayerDie/Layer 5(3).png" id="1_623o7"]
 [ext_resource type="Texture2D" uid="uid://d27pqla6mrfeh" path="res://Images/Player/PlayerDie/Layer 6(3).png" id="2_1d6b1"]
@@ -110,6 +110,7 @@ size = Vector2(42.5, 99)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_5xm5c")
+hp = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2925, 0.2925)

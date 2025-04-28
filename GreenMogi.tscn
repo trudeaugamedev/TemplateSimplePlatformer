@@ -1,24 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgm8j7er3a3mx"]
+[gd_scene load_steps=10 format=3 uid="uid://caakmn30v28ns"]
 
-[ext_resource type="Script" uid="uid://dyjsilpmlm3p7" path="res://basic_enemy.gd" id="1_we5as"]
-[ext_resource type="Texture2D" uid="uid://pyktyvyb3bkt" path="res://Images/Enemy/Amogi.png" id="2_rlggl"]
-[ext_resource type="Texture2D" uid="uid://dg4f8j2g7u83i" path="res://Images/Enemy/Amogi(1).png" id="3_ert10"]
-[ext_resource type="Texture2D" uid="uid://beqg2adf8egso" path="res://Images/Enemy/Amogi(2).png" id="4_auiro"]
+[ext_resource type="Script" uid="uid://bu8ggng4qwt74" path="res://green_mogi.gd" id="1_bi3r8"]
+[ext_resource type="Texture2D" uid="uid://d2gpusnfntmbu" path="res://Images/Enemy/Green/ga1.png" id="2_bi3r8"]
+[ext_resource type="Texture2D" uid="uid://cdc3pxuj1bgv0" path="res://Images/Enemy/Green/ga2.png" id="3_t45d2"]
+[ext_resource type="Texture2D" uid="uid://bajyk83xcpu33" path="res://Images/Enemy/Green/ga3.png" id="4_uw6pg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q7n4o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rlggl")
+"texture": ExtResource("2_bi3r8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ert10")
+"texture": ExtResource("3_t45d2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_auiro")
+"texture": ExtResource("4_uw6pg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ert10")
+"texture": ExtResource("3_t45d2")
 }],
 "loop": true,
 "name": &"moving",
@@ -34,12 +34,18 @@ size = Vector2(79, 71)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lc8f"]
 size = Vector2(81, 71.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi3r8"]
+size = Vector2(722, 82)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 5
 collision_mask = 5
 floor_max_angle = 0.0
 safe_margin = 0.001
-script = ExtResource("1_we5as")
+script = ExtResource("1_bi3r8")
+HEALTH = 2
+JUMP_SPEED = -800.0
+canJump = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q7n4o")
@@ -74,4 +80,12 @@ debug_color = Color(0.776214, 0, 0.0615261, 0.42)
 position = Vector2(16, 39)
 target_position = Vector2(25, 0)
 
+[node name="PlayerPredict" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="PredictRay" type="CollisionShape2D" parent="PlayerPredict"]
+position = Vector2(2, -116)
+shape = SubResource("RectangleShape2D_bi3r8")
+
 [connection signal="body_shape_entered" from="Killbox" to="." method="_on_killbox_body_shape_entered"]
+[connection signal="body_entered" from="PlayerPredict" to="." method="_on_player_predict_body_entered"]
