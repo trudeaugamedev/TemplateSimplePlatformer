@@ -1,7 +1,11 @@
-extends "res://basic_enemy.gd"
+class_name green_amogi
+extends amogi
 
 @export var land_speed = 300
 @onready var predict_ray = $PlayerPredict/PredictRay
+
+func _init():
+	pass
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)

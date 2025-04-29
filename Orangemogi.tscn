@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6wnapbrlkybd"]
+
+[ext_resource type="Script" uid="uid://cgxadavgtj63v" path="res://orangemogi.gd" id="1_y6j0i"]
+[ext_resource type="Texture2D" uid="uid://wypn3svu3v6h" path="res://Images/Enemy/Orange/Amogi(1).png" id="2_y6j0i"]
+[ext_resource type="Texture2D" uid="uid://c0ogya3wlfekh" path="res://Images/Enemy/Orange/Amogi(2).png" id="3_ig3k7"]
+[ext_resource type="Texture2D" uid="uid://b4373rygpepg3" path="res://Images/Enemy/Orange/Amogi.png" id="4_a5oua"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7n4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y6j0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ig3k7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y6j0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a5oua")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3f7c"]
+size = Vector2(83, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vah5"]
+size = Vector2(79, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lc8f"]
+size = Vector2(81, 71.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+floor_max_angle = 0.0
+safe_margin = 0.001
+script = ExtResource("1_y6j0i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q7n4o")
+animation = &"moving"
+frame_progress = 0.914267
+
+[node name="Killbox" type="Area2D" parent="."]
+position = Vector2(0.5, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(0, -55.5)
+shape = SubResource("RectangleShape2D_f3f7c")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_6vah5")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="DownRay" type="RayCast2D" parent="Hitbox"]
+position = Vector2(39, -2)
+target_position = Vector2(0, 47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 3.75)
+shape = SubResource("RectangleShape2D_2lc8f")
+debug_color = Color(0.776214, 0, 0.0615261, 0.42)
+
+[node name="SideRay" type="RayCast2D" parent="Hitbox"]
+position = Vector2(16, 39)
+target_position = Vector2(25, 0)
+
+[connection signal="body_shape_entered" from="Killbox" to="." method="_on_killbox_body_shape_entered"]

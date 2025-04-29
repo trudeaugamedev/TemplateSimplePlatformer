@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://b28u56jdwr2o6"]
+
+[ext_resource type="Script" uid="uid://cnapehcd1btrs" path="res://white_mogi.gd" id="1_7dvqk"]
+[ext_resource type="Texture2D" uid="uid://oxqbb4fnrkqu" path="res://Images/Enemy/White/Amogi(2).png" id="2_76x0j"]
+[ext_resource type="Texture2D" uid="uid://xtiok5hhjfrx" path="res://Images/Enemy/White/amd3.png" id="2_symka"]
+[ext_resource type="Texture2D" uid="uid://crvjplgbte4wh" path="res://Images/Enemy/White/amd4.png" id="3_rbad4"]
+[ext_resource type="Texture2D" uid="uid://c5nr34ew5wuoh" path="res://Images/Enemy/White/Amogi(1).png" id="3_sgh25"]
+[ext_resource type="Texture2D" uid="uid://cted5t43uugst" path="res://Images/Enemy/White/Amogi.png" id="4_r7fnl"]
+[ext_resource type="Texture2D" uid="uid://cjksqjuk0cer4" path="res://Images/Enemy/White/amd1.png" id="4_va8vo"]
+[ext_resource type="Texture2D" uid="uid://k7t0w1cxjs3s" path="res://Images/Enemy/White/amd2.png" id="5_wnsrt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q7n4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_symka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rbad4")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_va8vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wnsrt")
+}],
+"loop": true,
+"name": &"dashprepare",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_76x0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sgh25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r7fnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sgh25")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3f7c"]
+size = Vector2(83, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vah5"]
+size = Vector2(79, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lc8f"]
+size = Vector2(81, 71.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi3r8"]
+size = Vector2(722, 82)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+floor_max_angle = 0.0
+safe_margin = 0.001
+script = ExtResource("1_7dvqk")
+dash_speed = 2500
+HEALTH = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q7n4o")
+animation = &"dash"
+frame_progress = 0.164142
+
+[node name="Killbox" type="Area2D" parent="."]
+position = Vector2(0.5, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killbox"]
+position = Vector2(0, -55.5)
+shape = SubResource("RectangleShape2D_f3f7c")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4)
+shape = SubResource("RectangleShape2D_6vah5")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="DownRay" type="RayCast2D" parent="Hitbox"]
+position = Vector2(39, -2)
+target_position = Vector2(0, 47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 3.75)
+shape = SubResource("RectangleShape2D_2lc8f")
+debug_color = Color(0.776214, 0, 0.0615261, 0.42)
+
+[node name="SideRay" type="RayCast2D" parent="Hitbox"]
+position = Vector2(16, 39)
+target_position = Vector2(25, 0)
+
+[node name="PlayerPredict" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+
+[node name="PredictRay" type="CollisionShape2D" parent="PlayerPredict"]
+position = Vector2(406, 2)
+shape = SubResource("RectangleShape2D_bi3r8")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="body_shape_entered" from="Killbox" to="." method="_on_killbox_body_shape_entered"]
+[connection signal="body_entered" from="PlayerPredict" to="." method="_on_player_predict_body_entered"]
