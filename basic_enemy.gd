@@ -5,9 +5,9 @@ class_name amogi
 @export var HEALTH = 1
 @export var JUMP_SPEED = -600.0 # Negative is up
 @export var willTurn = true
+@export var canJump = false
 var direction = 1
 var hasJumped = true
-@export var canJump = false
 
 func _init():
 	#constructor
@@ -18,6 +18,9 @@ func _ready():
 	$AnimatedSprite2D.play("moving")
 
 func _physics_process(delta: float) -> void:
+	basic_movement(delta)
+
+func basic_movement(delta: float):
 	# Applies gravity
 	gravity(delta)
 	# Turns upon reaching edge
@@ -25,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	# Moves
 	velocity.x = direction * SPEED
 	move_and_slide() 
-	
+
 func gravity(delta: float):
 	# Add the gravity.
 	if not is_on_floor():

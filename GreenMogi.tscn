@@ -45,7 +45,6 @@ safe_margin = 0.001
 script = ExtResource("1_bi3r8")
 HEALTH = 2
 JUMP_SPEED = -800.0
-canJump = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q7n4o")
